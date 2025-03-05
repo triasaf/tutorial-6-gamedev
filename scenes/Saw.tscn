@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://c3fe406hq52um"]
+
+[ext_resource type="Texture2D" uid="uid://dvv3mspleuvvy" path="res://assets/kenney_platformerpack/PNG/Enemies/saw.png" id="1_7n43d"]
+[ext_resource type="Texture2D" uid="uid://cgoa1m3nwy5mr" path="res://assets/kenney_platformerpack/PNG/Enemies/saw_move.png" id="2_oakj0"]
+[ext_resource type="Script" path="res://scenes/animated_sprite_2d.gd" id="3_1puv0"]
+[ext_resource type="PackedScene" uid="uid://r0qfm7f6tcal" path="res://scenes/LoseArea.tscn" id="3_w1erl"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7pcyh"]
+bounce = 0.5
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ff0ny"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7n43d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_oakj0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0m1l6"]
+radius = 56.6667
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_arw78"]
+radius = 114.286
+
+[node name="Saw" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_7pcyh")
+linear_velocity = Vector2(5, 0)
+angular_velocity = 1.74533
+constant_force = Vector2(10, 0)
+constant_torque = 6.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.447678, 0.45)
+sprite_frames = SubResource("SpriteFrames_ff0ny")
+frame = 1
+frame_progress = 0.0126402
+script = ExtResource("3_1puv0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.3, 0.3)
+shape = SubResource("CircleShape2D_0m1l6")
+
+[node name="LoseArea" parent="." instance=ExtResource("3_w1erl")]
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" parent="LoseArea" index="0"]
+scale = Vector2(0.3, 0.3)
+shape = SubResource("CircleShape2D_arw78")
+
+[editable path="LoseArea"]

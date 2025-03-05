@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://bc2fujtl13g10"]
+[gd_scene load_steps=11 format=3 uid="uid://bc2fujtl13g10"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_xsgpf"]
 [ext_resource type="Texture2D" uid="uid://dhsqj8dybb7fq" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_alien.png" id="2"]
+[ext_resource type="Script" path="res://scenes/canvas_layer.gd" id="3_jwttq"]
+[ext_resource type="Texture2D" uid="uid://bfpt4n245ef1h" path="res://assets/kenney_platformerpack/PNG/Items/star.png" id="3_un856"]
 
-[sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(52.924, 76.884)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l30vs"]
+radius = 27.0
+height = 82.0
 
 [sub_resource type="Animation" id="2"]
 resource_name = "Idle"
@@ -61,11 +64,15 @@ _data = {
 "Walk": SubResource("4")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_2fdcs"]
+font_size = 50
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_xsgpf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("1")
+position = Vector2(-1, 2)
+shape = SubResource("CapsuleShape2D_l30vs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -25)
@@ -78,3 +85,37 @@ frame = 2
 libraries = {
 "": SubResource("AnimationLibrary_sbh6e")
 }
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-1, 8)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("3_jwttq")
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -78.0
+offset_right = 90.0
+offset_bottom = 128.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_un856")
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/HBoxContainer"]
+layout_mode = 2
+text = "0/3"
+label_settings = SubResource("LabelSettings_2fdcs")

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://hs4onngsyenf"]
+
+[ext_resource type="Script" path="res://scenes/spawner.gd" id="1_15k5e"]
+[ext_resource type="PackedScene" uid="uid://cjbict1k6unbu" path="res://scenes/Fish.tscn" id="2_kbyl1"]
+
+[node name="Spawner" type="Node2D"]
+position = Vector2(779, -319)
+script = ExtResource("1_15k5e")
+obstacle = ExtResource("2_kbyl1")

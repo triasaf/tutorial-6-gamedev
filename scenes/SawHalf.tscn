@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://cecqook4124vx"]
+
+[ext_resource type="Texture2D" uid="uid://idkx65fua554" path="res://assets/kenney_platformerpack/PNG/Enemies/sawHalf.png" id="1_vr2lg"]
+[ext_resource type="Texture2D" uid="uid://bbvwjihjrct1d" path="res://assets/kenney_platformerpack/PNG/Enemies/sawHalf_move.png" id="2_isybq"]
+[ext_resource type="Script" path="res://scenes/animated_sprite_2d.gd" id="3_1puv0"]
+[ext_resource type="PackedScene" uid="uid://ci11rpklfldfg" path="res://scenes/LosePolygon.tscn" id="3_srq8i"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g7evx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_vr2lg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_isybq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Saw" type="RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(6, 0)
+scale = Vector2(72.3551, 26.7733)
+polygon = PackedVector2Array(-0.856885, 0, -0.746319, -1.19522, -0.525188, -1.79283, -0.0829244, -2.09163, 0.359339, -1.79283, 0.580471, -1.19522, 0.691036, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -64)
+sprite_frames = SubResource("SpriteFrames_g7evx")
+frame_progress = 0.893717
+script = ExtResource("3_1puv0")
+
+[node name="LosePolygon" parent="." instance=ExtResource("3_srq8i")]
+position = Vector2(-72, -72)
+sceneName = "LoseScreen"
+
+[node name="CollisionPolygon2D" parent="LosePolygon" index="0"]
+position = Vector2(0, 8)
+scale = Vector2(1.1088, 1.14007)
+polygon = PackedVector2Array(21.645, 28.0685, 36.075, 14.0343, 64.9349, 7.01713, 93.7949, 14.0343, 108.225, 28.0685, 115.44, 56.137, 14.43, 56.137)
+
+[connection signal="body_entered" from="LosePolygon" to="LosePolygon" method="_on_body_entered"]
+
+[editable path="LosePolygon"]

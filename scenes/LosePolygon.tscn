@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ci11rpklfldfg"]
+
+[ext_resource type="Script" path="res://scenes/lose_polygon.gd" id="1_nw66f"]
+
+[node name="LosePolygon" type="Area2D"]
+script = ExtResource("1_nw66f")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-6, -5, 3, -5, 4, 2, -3, 5)

@@ -4,6 +4,8 @@ extends CharacterBody2D
 @export var gravity: int = 1200
 @export var jump_speed: int = -400
 
+var stars = 0
+
 
 func get_input():
 	velocity.x = 0
