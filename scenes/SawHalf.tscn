@@ -34,12 +34,12 @@ script = ExtResource("3_1puv0")
 
 [node name="LosePolygon" parent="." instance=ExtResource("3_srq8i")]
 position = Vector2(-72, -72)
-sceneName = "LoseScreen"
+sceneName = "Level2"
 
 [node name="CollisionPolygon2D" parent="LosePolygon" index="0"]
-position = Vector2(0, 8)
-scale = Vector2(1.1088, 1.14007)
-polygon = PackedVector2Array(21.645, 28.0685, 36.075, 14.0343, 64.9349, 7.01713, 93.7949, 14.0343, 108.225, 28.0685, 115.44, 56.137, 14.43, 56.137)
+position = Vector2(-2, 2)
+scale = Vector2(1.13659, 1.25308)
+polygon = PackedVector2Array(21.645, 28.0685, 36.075, 14.0342, 64.9351, 7.01711, 93.7951, 14.0342, 108.225, 28.0685, 115.44, 56.137, 14.43, 56.1369)
 
 [connection signal="body_entered" from="LosePolygon" to="LosePolygon" method="_on_body_entered"]
 

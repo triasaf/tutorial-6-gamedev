@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://c5jqna381vi1m"]
+[gd_scene load_steps=21 format=4 uid="uid://c5jqna381vi1m"]
 
 [ext_resource type="Texture2D" uid="uid://1cmkdw30hlrq" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_gr_snow.png" id="1_bf4op"]
 [ext_resource type="Texture2D" uid="uid://ck0ig8j5crb78" path="res://assets/kenney_platformerpack/PNG/Tiles/signRight.png" id="1_j5llj"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://c3fe406hq52um" path="res://scenes/Saw.tscn" id="13_833f2"]
 [ext_resource type="PackedScene" uid="uid://c7ge0g3ej4865" path="res://scenes/Star.tscn" id="14_g6hxy"]
 [ext_resource type="PackedScene" uid="uid://r0qfm7f6tcal" path="res://scenes/LoseArea.tscn" id="15_080qw"]
+[ext_resource type="PackedScene" uid="uid://crvp2bmbq3o28" path="res://scenes/Life Counter.tscn" id="16_771it"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w8rdl"]
 texture = ExtResource("2_v56gm")
@@ -73,7 +74,7 @@ sources/2 = SubResource("TileSetAtlasSource_cr57n")
 sources/0 = SubResource("TileSetAtlasSource_w8rdl")
 sources/1 = SubResource("TileSetAtlasSource_3cawn")
 
-[node name="Level 2" type="Node2D"]
+[node name="Level2" type="Node2D"]
 
 [node name="Background" type="Node2D" parent="."]
 
@@ -142,6 +143,7 @@ position = Vector2(-358, 508)
 
 [node name="LoseArea" parent="." instance=ExtResource("15_080qw")]
 position = Vector2(90, 2416)
+sceneName = "Level2"
 
 [node name="CollisionShape2D" parent="LoseArea" index="0"]
 position = Vector2(587.858, 66.5)
@@ -155,6 +157,10 @@ sceneName = "WinScreen"
 position = Vector2(-476.456, -5)
 rotation = -3.14159
 scale = Vector2(0.138188, 3.4779)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LifeCounter" parent="CanvasLayer" instance=ExtResource("16_771it")]
 
 [editable path="LoseArea"]
 [editable path="LoseArea2"]

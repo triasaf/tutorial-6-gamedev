@@ -9,4 +9,4 @@ func _on_body_entered(body: Node2D) -> void:
 		body.stars += 1
 		sprite.visible = false
 		active = false
-		StarsCollected.stars += 1
+		Globals.stars += 1

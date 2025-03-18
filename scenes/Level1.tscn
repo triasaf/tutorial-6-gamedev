@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://yqmk0vpvnyxr"]
+[gd_scene load_steps=10 format=4 uid="uid://yqmk0vpvnyxr"]
 
 [ext_resource type="PackedScene" uid="uid://bc2fujtl13g10" path="res://scenes/Player.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://cluh2ekc38ktx" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_gr_dirt.png" id="2_pff15"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://r0qfm7f6tcal" path="res://scenes/LoseArea.tscn" id="4_mlxuk"]
 [ext_resource type="PackedScene" uid="uid://cjbict1k6unbu" path="res://scenes/Fish.tscn" id="5_0ip2h"]
 [ext_resource type="PackedScene" uid="uid://hs4onngsyenf" path="res://scenes/Spawner.tscn" id="6_s2qvr"]
+[ext_resource type="PackedScene" uid="uid://crvp2bmbq3o28" path="res://scenes/Life Counter.tscn" id="7_1fd0p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rnffo"]
 texture = ExtResource("2_pff15")
@@ -90,6 +91,10 @@ position = Vector2(-2, 6)
 scale = Vector2(0.0157361, -1.11596)
 
 [node name="Spawner" parent="." instance=ExtResource("6_s2qvr")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LifeCounter" parent="CanvasLayer" instance=ExtResource("7_1fd0p")]
 
 [editable path="Sprite2D/WinArea"]
 [editable path="Fish2"]
