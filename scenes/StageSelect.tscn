@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcohq1547ccvt"]
+[gd_scene load_steps=6 format=3 uid="uid://dcohq1547ccvt"]
 
 [ext_resource type="Script" path="res://scenes/level_container.gd" id="1_0xg3p"]
 [ext_resource type="Texture2D" uid="uid://c7bdwtcuev8dy" path="res://assets/Level1.PNG" id="1_4pu5j"]
+[ext_resource type="Texture2D" uid="uid://3fepjvlgc6fl" path="res://assets/back-button.png" id="1_xpu1k"]
 [ext_resource type="Texture2D" uid="uid://cecr6w0ilg5s7" path="res://assets/Level2.PNG" id="2_cn8vd"]
+[ext_resource type="Script" path="res://scenes/back_button.gd" id="2_cyrs6"]
 
 [node name="StageSelect" type="MarginContainer"]
 anchors_preset = 15
@@ -15,11 +17,21 @@ theme_override_constants/margin_top = 200
 theme_override_constants/margin_right = 200
 theme_override_constants/margin_bottom = 200
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("1_xpu1k")
+script = ExtResource("2_cyrs6")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer2"]
 layout_mode = 2
 theme_override_constants/separation = 300
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer2/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 0
@@ -27,14 +39,14 @@ mouse_default_cursor_shape = 2
 script = ExtResource("1_0xg3p")
 levelName = "Level1"
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="HBoxContainer2/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 100
 text = "Level 1"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer2/HBoxContainer/VBoxContainer"]
 clip_contents = true
 layout_mode = 2
 size_flags_vertical = 6
@@ -42,7 +54,7 @@ texture = ExtResource("1_4pu5j")
 expand_mode = 4
 stretch_mode = 6
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer2/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 0
@@ -50,13 +62,13 @@ mouse_default_cursor_shape = 2
 script = ExtResource("1_0xg3p")
 levelName = "Level2"
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2"]
+[node name="Label" type="Label" parent="HBoxContainer2/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
 text = "Level 2"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer2"]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer2/HBoxContainer/VBoxContainer2"]
 clip_contents = true
 layout_mode = 2
 size_flags_vertical = 6
@@ -64,5 +76,6 @@ texture = ExtResource("2_cn8vd")
 expand_mode = 4
 stretch_mode = 6
 
-[connection signal="gui_input" from="HBoxContainer/VBoxContainer" to="HBoxContainer/VBoxContainer" method="_on_gui_input"]
-[connection signal="gui_input" from="HBoxContainer/VBoxContainer2" to="HBoxContainer/VBoxContainer2" method="_on_gui_input"]
+[connection signal="pressed" from="HBoxContainer2/TextureButton" to="HBoxContainer2/TextureButton" method="_on_pressed"]
+[connection signal="gui_input" from="HBoxContainer2/HBoxContainer/VBoxContainer" to="HBoxContainer2/HBoxContainer/VBoxContainer" method="_on_gui_input"]
+[connection signal="gui_input" from="HBoxContainer2/HBoxContainer/VBoxContainer2" to="HBoxContainer2/HBoxContainer/VBoxContainer2" method="_on_gui_input"]
