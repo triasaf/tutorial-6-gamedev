@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhnj41epq2rmv"]
+[gd_scene load_steps=4 format=3 uid="uid://bhnj41epq2rmv"]
 
-[ext_resource type="Script" path="res://scenes/link_button.gd" id="1_meitr"]
+[ext_resource type="Script" path="res://scenes/new_game_button.gd" id="1_meitr"]
 [ext_resource type="Texture2D" uid="uid://cy426xom8q1hy" path="res://assets/kenney_platformerpack/PNG/Players/128x256/Pink/alienPink_jump.png" id="2_4kjwp"]
+[ext_resource type="Script" path="res://scenes/stage_select_button.gd" id="2_op04q"]
 
 [node name="MainMenu" type="MarginContainer"]
 anchors_preset = 15
@@ -33,7 +34,8 @@ scene_to_load = "Level1"
 
 [node name="LinkButton2" type="LinkButton" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "Staage Select"
+text = "Stage Select"
+script = ExtResource("2_op04q")
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
@@ -42,3 +44,4 @@ texture = ExtResource("2_4kjwp")
 stretch_mode = 2
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/LinkButton" to="HBoxContainer/VBoxContainer/LinkButton" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/LinkButton2" to="HBoxContainer/VBoxContainer/LinkButton2" method="_on_pressed"]

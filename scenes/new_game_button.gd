@@ -1,4 +1,4 @@
-extends BaseButton
+extends LinkButton
 
 @export var scene_to_load: String
 
