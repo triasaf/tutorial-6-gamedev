@@ -27,4 +27,3 @@ one_way_collision_margin = 0.0
 [node name="LoseArea" parent="." instance=ExtResource("3_6w6pn")]
 position = Vector2(-2, 5)
 scale = Vector2(0.187592, 0.192597)
-sceneName = "Level1"

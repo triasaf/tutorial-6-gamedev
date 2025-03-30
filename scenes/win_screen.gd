@@ -7,15 +7,15 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	labelStars.text = str(StarsCollected.stars) + ' out of 3 Stars!'
+	labelStars.text = str(Globals.stars) + ' out of 3 Stars!'
 	var message = ""
-	if(StarsCollected.stars) == 0:
+	if(Globals.stars) == 0:
 		message = 'Do better!'
-	elif(StarsCollected.stars) == 1:
+	elif(Globals.stars) == 1:
 		message = 'Nice!'
-	elif(StarsCollected.stars) == 2:
+	elif(Globals.stars) == 2:
 		message = 'Well done!'
-	elif(StarsCollected.stars) == 3:
+	elif(Globals.stars) == 3:
 		message = 'Cheeky!!! Amazing!!'
 	
 	labelMessage.text = message
